@@ -1,28 +1,31 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { useLanguage } from '../../contexts/LanguageContext';
-import Icon from '../AppIcon';
-import Button from './Button';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useLanguage } from "../../contexts/LanguageContext";
+import Icon from "../AppIcon";
+import Button from "./Button";
 
 const LanguageToggle = () => {
   const { language, toggleLanguage, t } = useLanguage();
-  
+
   return (
     <Button
       variant="ghost"
       size="sm"
       onClick={toggleLanguage}
       className="font-caption text-sm px-3 py-1.5 hover:bg-muted transition-gentle"
-      aria-label={`Switch to ${language === 'en' ? 'Hindi' : 'English'}`}
+      aria-label={`Switch to ${language === "en" ? "Hindi" : "English"}`}
     >
-      {t('language')}
+      {t("language")}
     </Button>
   );
 };
 
 const Logo = () => {
   return (
-    <Link to="/home-landing" className="flex items-center space-x-3 transition-gentle hover:opacity-80">
+    <Link
+      to="/home-landing"
+      className="flex items-center space-x-3 transition-gentle hover:opacity-80"
+    >
       <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center shadow-gentle-sm">
         <svg
           width="24"
@@ -40,7 +43,7 @@ const Logo = () => {
       </div>
       <div className="hidden sm:block">
         <h1 className="font-heading font-semibold text-lg text-foreground leading-tight">
-          Cattle Breed
+          Pashu Ai
         </h1>
         <p className="font-caption text-xs text-muted-foreground -mt-0.5">
           Recognition
@@ -51,18 +54,23 @@ const Logo = () => {
 };
 
 const NavigationProgress = ({ currentPath }) => {
-  const paths = ['/home-landing', '/breed-identification-demo', '/supported-breeds-gallery', '/contact-and-feedback'];
+  const paths = [
+    "/home-landing",
+    "/breed-identification-demo",
+    "/supported-breeds-gallery",
+    "/contact-and-feedback",
+  ];
   const currentIndex = paths?.indexOf(currentPath);
-  
+
   if (currentIndex === -1) return null;
-  
+
   return (
     <div className="hidden lg:flex items-center space-x-1 ml-8">
       {paths?.map((_, index) => (
         <div
           key={index}
           className={`w-2 h-2 rounded-full transition-gentle ${
-            index <= currentIndex ? 'bg-primary' : 'bg-muted'
+            index <= currentIndex ? "bg-primary" : "bg-muted"
           }`}
         />
       ))}
@@ -76,10 +84,22 @@ const Header = () => {
   const { t } = useLanguage();
 
   const navigationItems = [
-    { path: '/home-landing', label: t('home'), icon: 'Home' },
-    { path: '/breed-identification-demo', label: t('identifyBreed'), icon: 'Camera' },
-    { path: '/supported-breeds-gallery', label: t('browseBreeds'), icon: 'Grid3X3' },
-    { path: '/contact-and-feedback', label: t('contact'), icon: 'MessageCircle' },
+    { path: "/home-landing", label: t("home"), icon: "Home" },
+    {
+      path: "/breed-identification-demo",
+      label: t("identifyBreed"),
+      icon: "Camera",
+    },
+    {
+      path: "/supported-breeds-gallery",
+      label: t("browseBreeds"),
+      icon: "Grid3X3",
+    },
+    {
+      path: "/contact-and-feedback",
+      label: t("contact"),
+      icon: "MessageCircle",
+    },
   ];
 
   const toggleMobileMenu = () => {
@@ -109,8 +129,9 @@ const Header = () => {
                   key={item?.path}
                   to={item?.path}
                   className={`relative px-4 py-2 rounded-lg font-body font-medium text-sm transition-gentle hover:bg-muted ${
-                    isActive 
-                      ? 'text-primary bg-primary/5' :'text-foreground hover:text-primary'
+                    isActive
+                      ? "text-primary bg-primary/5"
+                      : "text-foreground hover:text-primary"
                   }`}
                 >
                   {item?.label}
@@ -125,19 +146,16 @@ const Header = () => {
           {/* Language Toggle & Mobile Menu Button */}
           <div className="flex items-center space-x-2">
             <LanguageToggle />
-            
+
             {/* Mobile Menu Button */}
             <Button
               variant="ghost"
               size="sm"
               onClick={toggleMobileMenu}
               className="md:hidden p-2"
-              aria-label={isMobileMenuOpen ? t('close') : t('menu')}
+              aria-label={isMobileMenuOpen ? t("close") : t("menu")}
             >
-              <Icon 
-                name={isMobileMenuOpen ? 'X' : 'Menu'} 
-                size={20} 
-              />
+              <Icon name={isMobileMenuOpen ? "X" : "Menu"} size={20} />
             </Button>
           </div>
         </div>
@@ -154,8 +172,9 @@ const Header = () => {
                   to={item?.path}
                   onClick={closeMobileMenu}
                   className={`flex items-center space-x-3 px-4 py-3 rounded-lg font-body font-medium transition-gentle ${
-                    isActive 
-                      ? 'text-primary bg-primary/5 border border-primary/20' :'text-foreground hover:bg-muted hover:text-primary'
+                    isActive
+                      ? "text-primary bg-primary/5 border border-primary/20"
+                      : "text-foreground hover:bg-muted hover:text-primary"
                   }`}
                 >
                   <Icon name={item?.icon} size={20} />
@@ -177,13 +196,9 @@ export default Header;
 const LanguageProvider = () => {
   React.useEffect(() => {
     // eslint-disable-next-line no-console
-    console.warn('Placeholder: LanguageProvider is not implemented yet.');
+    console.warn("Placeholder: LanguageProvider is not implemented yet.");
   }, []);
-  return (
-    <div>
-      {/* LanguageProvider placeholder */}
-    </div>
-  );
+  return <div>{/* LanguageProvider placeholder */}</div>;
 };
 
 export { LanguageProvider };
