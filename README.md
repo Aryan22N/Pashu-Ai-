@@ -1,6 +1,6 @@
 
 # Deployed Project link
-https://pashu-ai-p.netlify.app/
+https://pashu-ai1.netlify.app/
 
 # React
 
